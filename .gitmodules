@@ -1,0 +1,3 @@
+[submodule "numerics-public"]
+	path = numerics-public
+	url = git@github.com:MJSteil/numerics.git

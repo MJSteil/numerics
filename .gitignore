@@ -1,0 +1,15 @@
+# Build files
+.cmake*
+
+# Build libraries
+*.a
+
+# Output directories
+debug/
+release/
+
+# Documentation
+doc/
+
+#Scripts
+*.bash

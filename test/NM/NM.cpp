@@ -9,7 +9,7 @@
 #pragma ide diagnostic ignored "cert-err58-cpp"
 
 #include "../../NM/numerics_NM.hpp"
-#include "../../../matplotlib-cpp/matplotlibcpp.h" // https://github.com/MJSteil/matplotlib-cpp
+#include "../../matplotlib-cpp/matplotlibcpp.h" // https://github.com/MJSteil/matplotlib-cpp
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MAIN  // in only one cpp file

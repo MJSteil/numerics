@@ -343,7 +343,7 @@ namespace numerics {
      */
     inline double get_wall_time(){
         auto now = std::chrono::system_clock::now().time_since_epoch();
-        return static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(now).count())*1E-3;
+        return static_cast<double>(std::chrono::duration_cast<std::chrono::milliseconds>(now).count()) * 1E-3;
     }
 
     /**
@@ -351,7 +351,7 @@ namespace numerics {
      * @return The current processor time consumed by the program in seconds: <code>(double)clock() / CLOCKS_PER_SEC</code>
      */
     inline double get_cpu_time(){
-        return (double)clock() / CLOCKS_PER_SEC;
+        return static_cast<double>(std::clock()) / CLOCKS_PER_SEC;
     }
 
     /**
@@ -381,6 +381,7 @@ namespace numerics {
         return time_string;
     }
 
+    template<bool printQ = true>
     class timer{
     private:
         double cpu_start_time{};
@@ -389,20 +390,26 @@ namespace numerics {
         double wall_end_time{};
         std::string timestamp_start{};
         std::string timestamp_end{};
+        bool no_points{};
     public:
-        explicit timer(bool no_points=false){
-            start(no_points);
+        explicit timer(bool no_points_in=false) : no_points(no_points_in){
+            start();
         }
 
-        void start(bool no_points=false){
-            cpu_start_time = get_cpu_time();
-            wall_start_time = get_wall_time();
+        ~timer(){
+            stop();
+            if constexpr (printQ) print();
+        }
+
+        void start(){
+            cpu_start_time = numerics::get_cpu_time();
+            wall_start_time = numerics::get_wall_time();
             timestamp_start=get_time_stamp(no_points);
         }
 
-        void stop(bool no_points=false){
-            cpu_end_time = get_cpu_time();
-            wall_end_time = get_wall_time();
+        void stop(){
+            cpu_end_time = numerics::get_cpu_time();
+            wall_end_time = numerics::get_wall_time();
             timestamp_end=get_time_stamp(no_points);
         }
 
@@ -423,7 +430,7 @@ namespace numerics {
         }
 
         void print() const {
-            printf("Done in %.4Es (%.4Es CPU)\n %s to %s\n",get_wall_time(),get_cpu_time(),timestamp_start.c_str(),timestamp_end.c_str());
+            printf("Done in %.4Es (%.4Es CPU)\n%s to %s\n",get_wall_time(),get_cpu_time(),timestamp_start.c_str(),timestamp_end.c_str());
         }
 
         [[nodiscard]] nlohmann::ordered_json to_json() const{

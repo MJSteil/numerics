@@ -87,7 +87,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE OMP_THREADS=${OMP_THREADS}) #
 target_link_libraries(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/cubature/libcubature-${CMAKE_BUILD_TYPE}.a)
 
 # Matplotlib-cpp
-include(../matplotlib-cpp/matplotlibcpp.cmake)
+include(matplotlib-cpp/matplotlibcpp.cmake)
 
 # GSL
 find_package(GSL REQUIRED)

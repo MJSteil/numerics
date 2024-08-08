@@ -4,7 +4,7 @@
  * @date 2024.08.08
  * @brief Some basic examples and test for matplotlibcpp
  */
-#include "../../../matplotlib-cpp/matplotlibcpp.h" // https://github.com/MJSteil/matplotlib-cpp
+#include "../../matplotlib-cpp/matplotlibcpp.h" // https://github.com/MJSteil/matplotlib-cpp
 
 #define BOOST_TEST_DYN_LINK
 #define BOOST_TEST_MAIN  // in only one cpp file

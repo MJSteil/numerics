@@ -8,6 +8,7 @@
 
 #include "numerics_functions.hpp"
 #include <thread>
+
 int main() {
     numerics::timer<> timer;
 

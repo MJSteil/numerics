@@ -16,6 +16,12 @@ target_link_libraries(Boost_Test_cubature ${Boost_LIBRARIES} ${CMAKE_CURRENT_SOU
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 find_package(Python3 COMPONENTS NumPy)
 
+find_package(GSL REQUIRED)
+include_directories(${GSL_INCLUDE_DIR})
+
+add_executable(Boost_Test_DLi DLi/DLi.cpp)
+target_link_libraries(Boost_Test_DLi ${Boost_LIBRARIES} ${GSL_LIBRARIES} Python3::Python Python3::Module Python3::NumPy)
+
 add_executable(Boost_Test_matplotlibcpp matplotlibcpp/matplotlibcpp.cpp)
 target_link_libraries(Boost_Test_matplotlibcpp ${Boost_LIBRARIES} Python3::Python Python3::Module Python3::NumPy)
 

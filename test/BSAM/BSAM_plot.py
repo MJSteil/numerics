@@ -35,7 +35,7 @@ for n in nv:
     fig, ax = plt.subplots()
     
     # Load the JSON file
-    with open('mandelbrot_lvl_0.json', 'r') as file:
+    with open("mandelbrot_lvl_"+n+".json", 'r') as file:
         data = json.load(file)
     
     points=np.array(data['points'])

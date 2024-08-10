@@ -38,12 +38,11 @@
 #ifndef CUBATURE_H
 #define CUBATURE_H
 
-#include <stdlib.h> /* for size_t */
-
 #ifdef __cplusplus
 namespace cubature{
 extern "C"
 {
+    #include <stdlib.h> /* for size_t */
 #endif /* __cplusplus */
 
 /**
@@ -129,7 +128,7 @@ int hcubature(unsigned fdim, integrand f, void *fdata,
  * @param err pointer to integral result error estimate
  * @return hcubature status (=0 for success) obtained from functor status
  */
-int hcubature_v(unsigned fdim, integrand_v f, void *fdata,
+    __attribute__((unused)) int hcubature_v(unsigned fdim, integrand_v f, void *fdata,
                 unsigned dim, const double *xmin, const double *xmax,
                 size_t maxEval, double reqAbsError, double reqRelError,
                 error_norm norm,

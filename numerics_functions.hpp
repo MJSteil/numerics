@@ -26,6 +26,10 @@
 
 #include "json/json.hpp"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+#pragma ide diagnostic ignored "OCUnusedMacroInspection"
+
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_YELLOW  "\x1b[33m"
@@ -35,10 +39,6 @@
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
 namespace numerics {
-    #pragma clang diagnostic push
-    #pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-    #pragma ide diagnostic ignored "OCUnusedMacroInspection"
-
     //region Mathematical functions
 
     /**
@@ -218,25 +218,6 @@ namespace numerics {
         odd_over_x = -2,
         none =0
     };
-
-/*    template<parity_type parity,size_t n=1>
-    constexpr parity_type switch_parity(){
-        if constexpr(parity==odd||parity==even){
-            return (n & 1 ) ? (parity==odd? even : odd)
-
-            : parity;
-        } else {
-            return parity;
-        }
-    }
-
-    parity_type switch_parity(parity_type parity,size_t n=1){
-        if (parity==odd||parity==even){
-            return (n & 1 ) ? (parity==odd? even : odd) : parity;
-        } else {
-            return parity;
-        }
-    }*/
     //endregion
 
     //region General helpers
@@ -381,6 +362,10 @@ namespace numerics {
         return time_string;
     }
 
+    /**
+     * @brief Timer class to measure wall and cpu time including timestamps
+     * @tparam printQ If true ~timer() calls print() to print the timestamp
+     */
     template<bool printQ = true>
     class timer{
     private:
@@ -445,8 +430,9 @@ namespace numerics {
 
     //endregion
 
-    #pragma clang diagnostic pop
+
 }
 
+#pragma clang diagnostic pop
 #endif //NUMERICS_NUMERICS_FUNCTIONS_HPP
 

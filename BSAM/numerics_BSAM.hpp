@@ -9,6 +9,9 @@
 #ifndef NUMERICS_NUMERICS_BSAMR_HPP
 #define NUMERICS_NUMERICS_BSAMR_HPP
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #include <iostream>
 #include <fstream>
 
@@ -325,7 +328,7 @@ namespace numerics::BSAM{
          */
         explicit mesh(point_container *points_in, const std::string &file_in): mesh(points_in){
 
-            std::string extension = file_in.substr(file_in.find_last_of(".") + 1); // Determine the file extension
+            std::string extension = file_in.substr(file_in.find_last_of('.') + 1); // Determine the file extension
 
             if (extension == "json") {
                 load_json(file_in);
@@ -965,7 +968,7 @@ namespace numerics::BSAM{
          */
         void subdivide_lvl(int lvl_in){
             if(mpi_world_rank==0){
-                int type=0;
+                int type;
                 points->p_1=p+1;
                 points->n_p=p+1;
                 size_t tmax=t;
@@ -1159,4 +1162,5 @@ namespace numerics::BSAM{
     };
 }
 
+#pragma clang diagnostic pop
 #endif //NUMERICS_NUMERICS_BSAMR_HPP

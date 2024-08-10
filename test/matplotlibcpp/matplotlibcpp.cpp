@@ -52,6 +52,4 @@ BOOST_AUTO_TEST_CASE( matplotlibcpp_save )
 
 }
 
-
-
 BOOST_AUTO_TEST_SUITE_END()

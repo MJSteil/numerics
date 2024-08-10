@@ -8,6 +8,9 @@
 #ifndef NUMERICS_NUMERICS_POINT_DEQUE_HPP
 #define NUMERICS_NUMERICS_POINT_DEQUE_HPP
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+
 #include <iostream>
 #include <fstream>
 
@@ -55,8 +58,7 @@ namespace numerics{
         std::vector<size_t> pi;  /**< @brief Index of the points to compute*/
         std::vector<size_t> ni;  /**< @brief Number of points to compute on different MPI ranks*/
 
-        virtual void comp(std::deque<point> *points_in,int mpi_rank_in, int omp_tid_in, const std::vector<size_t> * iota_in){
-        }
+        virtual void comp(std::deque<point> *,int , int , const std::vector<size_t> * ){}
 
         /**
          * @brief Default constructor
@@ -215,7 +217,7 @@ namespace numerics{
     };
 
     template<class point, typename fkt, bool use_mpi_in = numerics::MPI::use, bool use_omp_in = numerics::OMP::use, bool verbose_in = true>
-    class point_deque_lambda : public point_deque<point,use_mpi_in,use_omp_in,verbose_in> {
+    class [[maybe_unused]] point_deque_lambda : public point_deque<point,use_mpi_in,use_omp_in,verbose_in> {
     public:
         fkt *comp_fkt;
 
@@ -229,7 +231,7 @@ namespace numerics{
     };
 
     template<class point, typename member_type, void(member_type::*func)(std::deque<point> *,int , int, size_t , size_t,const std::vector<size_t> *), bool use_mpi_in = numerics::MPI::use, bool use_omp_in = numerics::OMP::use, bool verbose_in = true>
-    class point_deque_member : public point_deque<point,use_mpi_in,use_omp_in,verbose_in> {
+    class [[maybe_unused]] point_deque_member : public point_deque<point,use_mpi_in,use_omp_in,verbose_in> {
     public:
         member_type *member;
 
@@ -276,4 +278,6 @@ namespace numerics{
     };
 
 }
+
+#pragma clang diagnostic pop
 #endif //NUMERICS_NUMERICS_POINT_DEQUE_HPP

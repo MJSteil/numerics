@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE( Mandelbrot_2D )
     BOOST_CHECK(mandelbrot_mesh.p == ref_p );
     BOOST_CHECK( mandelbrot_mesh.e == ref_e );
     BOOST_CHECK( mandelbrot_mesh.t == ref_t );
-    BOOST_CHECK( mandelbrotpoints[mandelbrot_mesh.p].x == ref_x && mandelbrotpoints[mandelbrot_mesh.p].y == ref_x );
+    BOOST_CHECK( mandelbrotpoints[mandelbrot_mesh.p].x == ref_x && mandelbrotpoints[mandelbrot_mesh.p].y == ref_y );
 
     // Test loading method
     auto mandelbrotpoints_loaded = mandelbrotpoints;
